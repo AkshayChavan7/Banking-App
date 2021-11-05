@@ -11,11 +11,10 @@
         android:id="@+id/cv_product_rvcontent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
         android:background="@drawable/card_border"
         android:padding="5dp"
         app:cardBackgroundColor="@color/colorWhite"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="8dp"
         app:cardElevation="2dp"
         app:strokeColor="#ECEBEB"
         app:strokeWidth="1dp">

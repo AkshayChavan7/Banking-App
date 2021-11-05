@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.akshaychavan.bankingapp.TransferSchema;
+
 /**
  * Created by Akshay Chavan on 04,November,2021
  * akshaychavan.kkwedu@gmail.com
@@ -14,18 +16,18 @@ import android.util.Log;
  */
 public class DBAccess {
 
+    private static DBAccess instance;
     private final String TAG = "DBAccess";
+    Cursor c = null;
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase db;
-    private static DBAccess instance;
-    Cursor c = null;
 
     private DBAccess(Context context) {
         this.openHelper = new DBHelper(context);
     }
 
     public static DBAccess getInstance(Context context) {
-        if(instance == null) {
+        if (instance == null) {
             instance = new DBAccess(context);
         }
         return instance;
@@ -36,7 +38,7 @@ public class DBAccess {
     }
 
     public void closeConnection() {
-        if(this.db!=null) {
+        if (this.db != null) {
             this.db.close();
         }
     }
@@ -65,9 +67,9 @@ public class DBAccess {
         Cursor c = this.db.rawQuery("SELECT name FROM sqlite_master WHERE type='table' AND name!='android_metadata' order by name", null);
 
         if (c.moveToFirst()) {
-            while ( !c.isAfterLast() ) {
+            while (!c.isAfterLast()) {
 //                Toast.makeText(activityName.this, "Table Name=> "+c.getString(0), Toast.LENGTH_LONG).show();
-                Log.e(TAG, "Table Name==>"+c.getString(0));
+                Log.e(TAG, "Table Name==>" + c.getString(0));
                 c.moveToNext();
             }
         }
@@ -92,6 +94,31 @@ public class DBAccess {
         return cursor;
     }
 
+    public Cursor fetchTransactionsForUser(int ID) {
+        String query = "SELECT * FROM transfers WHERE From_ID=" + ID + ";";
+
+        Cursor cursor = null;
+
+        if (db != null) {
+            cursor = this.db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+    public String getUserNameFromID(int ID) {
+        String query = "SELECT Name from user WHERE ID=" + ID + ";";
+
+        Cursor cursor = null;
+
+        if (db != null) {
+            cursor = this.db.rawQuery(query, null);
+
+            while (cursor.moveToNext()) {
+                return cursor.getString(0);
+            }
+        }
+        return null;
+    }
 
 
 }
