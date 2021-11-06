@@ -28,7 +28,7 @@
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CO2 Bank"
+                android:text="TSF Bank"
                 android:textColor="@color/colorOrange"
                 android:fontFamily="@font/quantico"
                 android:textSize="60dp"

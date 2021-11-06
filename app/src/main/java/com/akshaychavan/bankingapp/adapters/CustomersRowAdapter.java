@@ -87,6 +87,7 @@ public class CustomersRowAdapter extends RecyclerView.Adapter<CustomersRowAdapte
 
                 globalCode.getFmCustomerList().setVisibility(View.GONE);
                 globalCode.getFmCustomerDetails().setVisibility(View.VISIBLE);
+                globalCode.getIvBack().setVisibility(View.VISIBLE);
             }
         });
 
