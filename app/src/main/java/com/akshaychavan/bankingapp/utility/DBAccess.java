@@ -6,8 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.akshaychavan.bankingapp.TransferSchema;
-
 /**
  * Created by Akshay Chavan on 04,November,2021
  * akshaychavan.kkwedu@gmail.com
@@ -95,7 +93,7 @@ public class DBAccess {
     }
 
     public Cursor fetchTransactionsForUser(int ID) {
-        String query = "SELECT * FROM transfers WHERE From_ID=" + ID + ";";
+        String query = "SELECT * FROM transfers WHERE From_ID=" + ID + " OR To_ID=" + ID + " ORDER BY Timestamp DESC;";
 
         Cursor cursor = null;
 
