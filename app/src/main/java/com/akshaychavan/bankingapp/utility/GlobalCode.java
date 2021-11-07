@@ -39,6 +39,7 @@ public class GlobalCode {
     GoogleSignInAccount accountDetails;
     GoogleSignInClient googleSignInClient;
     String personName, personEmail;
+    String loggedInWith = "None";
     Uri personPhoto;
 
     public int selectedCustomerID;
@@ -281,5 +282,13 @@ public class GlobalCode {
 
     public void setPersonPhoto(Uri personPhoto) {
         this.personPhoto = personPhoto;
+    }
+
+    public String getLoggedInWith() {
+        return loggedInWith;
+    }
+
+    public void setLoggedInWith(String loggedInWith) {
+        this.loggedInWith = loggedInWith;
     }
 }
