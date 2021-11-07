@@ -1,9 +1,11 @@
 package com.akshaychavan.bankingapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.akshaychavan.bankingapp.utility.GlobalCode;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -44,6 +47,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText etName, etEmail;
     MaterialButton signinButton;
     TextView titleText;
+    ConstraintLayout clLoginMain;
+    private AnimationDrawable animationDrawable;
 
     GlobalCode globalCode;
 
@@ -65,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         checkLoginState();      // check login state, if already logged in then directly open main activity
         bindVariables();
         bindEvents();
+        setBackgroundAnimation();
         loadLoginDetails();
 
     }
@@ -85,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void bindVariables() {
+        clLoginMain = findViewById(R.id.cl_login_main);
         etName = findViewById(R.id.et_name);
         etEmail = findViewById(R.id.et_email);
         signinButton = findViewById(R.id.signin);
@@ -114,6 +121,18 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    private void setBackgroundAnimation() {
+        // initializing animation drawable by getting background from constraint layout
+        animationDrawable = (AnimationDrawable) clLoginMain.getBackground();
+
+        // setting enter fade animation duration to 5 seconds
+        animationDrawable.setEnterFadeDuration(10);
+
+        // setting exit fade animation duration to 2 seconds
+        animationDrawable.setExitFadeDuration(2000);
+
+        animationDrawable.start();
+    }
 
     private void checkLoginState() {
 
