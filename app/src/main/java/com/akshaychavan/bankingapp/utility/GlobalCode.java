@@ -2,6 +2,7 @@ package com.akshaychavan.bankingapp.utility;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -37,6 +38,8 @@ public class GlobalCode {
 
     GoogleSignInAccount accountDetails;
     GoogleSignInClient googleSignInClient;
+    String personName, personEmail;
+    Uri personPhoto;
 
     public int selectedCustomerID;
     public String selectedPage = "customers_list";
@@ -254,5 +257,29 @@ public class GlobalCode {
 
     public void setEtBeneficiaryName(AutoCompleteTextView etBeneficiaryName) {
         this.etBeneficiaryName = etBeneficiaryName;
+    }
+
+    public String getPersonName() {
+        return personName;
+    }
+
+    public void setPersonName(String personName) {
+        this.personName = personName;
+    }
+
+    public String getPersonEmail() {
+        return personEmail;
+    }
+
+    public void setPersonEmail(String personEmail) {
+        this.personEmail = personEmail;
+    }
+
+    public Uri getPersonPhoto() {
+        return personPhoto;
+    }
+
+    public void setPersonPhoto(Uri personPhoto) {
+        this.personPhoto = personPhoto;
     }
 }

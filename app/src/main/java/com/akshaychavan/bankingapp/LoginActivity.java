@@ -32,10 +32,13 @@ import com.google.android.material.button.MaterialButton;
 
 import java.util.HashMap;
 import java.util.Map;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
 
 public class LoginActivity extends AppCompatActivity {
 
-    public static final String SHARED_PREFS = "sharedprefs1";
+    public static final String SHARED_PREFS = "sharedprefs";
     public static final String USER_NAME = "name";
     public static final String USER_EMAIL = "email";
     public static final String LOGIN_STATE = "login";
@@ -167,6 +170,9 @@ public class LoginActivity extends AppCompatActivity {
             personId = acct.getId();
             personPhoto = acct.getPhotoUrl();
 
+            globalCode.setPersonName(personName);
+            globalCode.setPersonEmail(personEmail);
+            globalCode.setPersonPhoto(personPhoto);
             loginState = true;      // login success
 //            }
 
