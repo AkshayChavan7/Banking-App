@@ -12,26 +12,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.akshaychavan.bankingapp.utility.GlobalCode;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.RetryPolicy;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.internal.GmsLogger;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
-
-import java.util.HashMap;
-import java.util.Map;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 

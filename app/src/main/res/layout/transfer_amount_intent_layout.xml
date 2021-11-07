@@ -107,7 +107,7 @@
                     android:background="@color/colorTransparent"
                     android:completionThreshold="1"
                     android:inputType="number"
-                    android:hint="Transfer Amount"
+                    android:hint="Amount"
                     android:padding="5dp"
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/colorLightGrey"

@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Created by Akshay Chavan on 04,November,2021
@@ -19,9 +20,11 @@ public class DBAccess {
     Cursor c = null;
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase db;
+    Context mContext;
 
     private DBAccess(Context context) {
         this.openHelper = new DBHelper(context);
+        mContext = context;
     }
 
     public static DBAccess getInstance(Context context) {
@@ -41,20 +44,35 @@ public class DBAccess {
         }
     }
 
-    public void transferAmount(int fromAccountID, int toAccountID, int amount) {
+    public boolean transferAmount(int fromAccountID, int toAccountID, int amount) {
 //        SQLiteDatabase db = this.getWritableDatabase();
 //        ContentValues cv = new ContentValues();
 
 //        openConnection();
-        // update user table with deducted and credited amounts
-        String deductAmountQuery = "UPDATE user SET balance=(SELECT balance FROM user WHERE ID=" + fromAccountID + ")-" + amount + " WHERE ID = " + fromAccountID + ";";
-        String creditAmountQuery = "UPDATE user SET balance=(SELECT balance FROM user WHERE ID=" + toAccountID + ")+" + amount + " WHERE ID = " + toAccountID + ";";
-        this.db.execSQL(deductAmountQuery);
-        this.db.execSQL(creditAmountQuery);
+        // check if user is having sufficient amount to transfer
+        String amountQuery = "SELECT Balance from user WHERE ID = "+fromAccountID+";";
+        Cursor c = this.db.rawQuery(amountQuery, null);
+        int fromUserBalance = 0;
+        if (c.moveToFirst()) {
+            fromUserBalance = c.getInt(0);
+        }
 
-        // add entry into transfers table
-        String transferRecordQuery = "INSERT INTO transfers VALUES(" + fromAccountID + "," + toAccountID + "," + amount + ", datetime());";
-        this.db.execSQL(transferRecordQuery);
+        if(fromUserBalance<amount) {
+            Toast.makeText(this.mContext, "Insufficient account balance!\nMaximum Tranferrable Amount = "+fromUserBalance, Toast.LENGTH_LONG).show();
+            return false;
+        }
+        else {
+            // update user table with deducted and credited amounts
+            String deductAmountQuery = "UPDATE user SET balance=(SELECT balance FROM user WHERE ID=" + fromAccountID + ")-" + amount + " WHERE ID = " + fromAccountID + ";";
+            String creditAmountQuery = "UPDATE user SET balance=(SELECT balance FROM user WHERE ID=" + toAccountID + ")+" + amount + " WHERE ID = " + toAccountID + ";";
+            this.db.execSQL(deductAmountQuery);
+            this.db.execSQL(creditAmountQuery);
+
+            // add entry into transfers table
+            String transferRecordQuery = "INSERT INTO transfers VALUES(" + fromAccountID + "," + toAccountID + "," + amount + ", datetime());";
+            this.db.execSQL(transferRecordQuery);
+        }
+        return true;
 //        this.db.close();
 //        closeConnection();
     }
