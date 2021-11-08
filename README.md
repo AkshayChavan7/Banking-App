@@ -8,6 +8,8 @@
 			- Create a mobile app where user can login through at least two social media from such as Facebook and Google  
 			- After login display all the details (eg. Name, Profile Photo, Email, etc.) on the second page
 			- Very good looking UI and responsive UI, which should work for all mobiles as well as tablets.
+#
+**App Link:** [Banking App.apk](https://drive.google.com/file/d/1VoRY8-0iLLnrxb0MCbnqG3EeyFuAi38G/view?usp=sharing)
 
 #
 **Development Technologies:**
@@ -55,4 +57,4 @@
 
  #
  **&copy; Akshay Chavan**
-#GRIP_NOV'21
+#GRIPNOVEMBER21
