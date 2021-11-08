@@ -127,7 +127,10 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginRight="20dp"
-                    android:src="@mipmap/google_logo"/>
+                    android:src="@mipmap/google_logo"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    />
                 <FrameLayout
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -146,12 +149,16 @@
                         app:layout_constraintHorizontal_bias="0.497"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.799" />
+                        app:layout_constraintVertical_bias="0.799"
+                        android:clickable="true"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        />
                     <ImageView
                         android:id="@+id/iv_facebook_login"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@mipmap/facebook_logo"/>
+                        android:src="@mipmap/facebook_logo"
+                        />
                 </FrameLayout>
             </LinearLayout>
 

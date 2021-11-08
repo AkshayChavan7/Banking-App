@@ -180,6 +180,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        ivFacebookLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e(TAG, "Facebook login clicked!");
+            }
+        });
+
         ivGoogleLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -221,6 +228,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                Log.e(TAG, "Facebook login");
                 // App code
                 GraphRequest graphRequest = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback() {
@@ -261,11 +269,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onCancel() {
                 // App code
+                Log.e(TAG, "Facebook login-onCancel");
             }
 
             @Override
             public void onError(FacebookException exception) {
                 // App code
+                Log.e(TAG, "Facebook login-onError\n"+exception.getMessage());
             }
         });
     }
