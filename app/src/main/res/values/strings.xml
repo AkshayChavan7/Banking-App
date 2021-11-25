@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Banking App</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+    <string name="facebook_app_id">438232267673745</string>
+    <string name="fb_login_protocol_scheme">fb438232267673745</string>
+
+
+</resources>
